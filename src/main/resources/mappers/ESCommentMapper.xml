@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.rayhahah.raymall.dao.CartMapper">
-  <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.Cart">
+<mapper namespace="com.rayhahah.raymall.dao.ESCommentMapper">
+  <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.ESComment">
     <constructor>
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="product_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="quantity" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="checked" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="version_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="version_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="comment" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List">
-    id, user_id, product_id, quantity, checked, create_time, update_time
+    id, user_id, version_name, version_code, comment, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from raymall_cart
+    from easysport_comment
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from raymall_cart
+    delete from easysport_comment
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.Cart">
-    insert into raymall_cart (id, user_id, product_id, 
-      quantity, checked, create_time, 
+  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.ESComment">
+    insert into easysport_comment (id, user_id, version_name, 
+      version_code, comment, create_time, 
       update_time)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
-      #{quantity,jdbcType=INTEGER}, #{checked,jdbcType=INTEGER}, now(), 
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{versionName,jdbcType=VARCHAR}, 
+      #{versionCode,jdbcType=VARCHAR}, #{comment,jdbcType=VARCHAR}, now(),
       now())
   </insert>
-  <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.Cart">
-    insert into raymall_cart
+  <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.ESComment">
+    insert into easysport_comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -42,14 +42,14 @@
       <if test="userId != null">
         user_id,
       </if>
-      <if test="productId != null">
-        product_id,
+      <if test="versionName != null">
+        version_name,
       </if>
-      <if test="quantity != null">
-        quantity,
+      <if test="versionCode != null">
+        version_code,
       </if>
-      <if test="checked != null">
-        checked,
+      <if test="comment != null">
+        comment,
       </if>
       <if test="createTime != null">
         create_time,
@@ -65,14 +65,14 @@
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="productId != null">
-        #{productId,jdbcType=INTEGER},
+      <if test="versionName != null">
+        #{versionName,jdbcType=VARCHAR},
       </if>
-      <if test="quantity != null">
-        #{quantity,jdbcType=INTEGER},
+      <if test="versionCode != null">
+        #{versionCode,jdbcType=VARCHAR},
       </if>
-      <if test="checked != null">
-        #{checked,jdbcType=INTEGER},
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         now(),
@@ -82,20 +82,20 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.Cart">
-    update raymall_cart
+  <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.ESComment">
+    update easysport_comment
     <set>
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="productId != null">
-        product_id = #{productId,jdbcType=INTEGER},
+      <if test="versionName != null">
+        version_name = #{versionName,jdbcType=VARCHAR},
       </if>
-      <if test="quantity != null">
-        quantity = #{quantity,jdbcType=INTEGER},
+      <if test="versionCode != null">
+        version_code = #{versionCode,jdbcType=VARCHAR},
       </if>
-      <if test="checked != null">
-        checked = #{checked,jdbcType=INTEGER},
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -106,12 +106,12 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.Cart">
-    update raymall_cart
+  <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.ESComment">
+    update easysport_comment
     set user_id = #{userId,jdbcType=INTEGER},
-      product_id = #{productId,jdbcType=INTEGER},
-      quantity = #{quantity,jdbcType=INTEGER},
-      checked = #{checked,jdbcType=INTEGER},
+      version_name = #{versionName,jdbcType=VARCHAR},
+      version_code = #{versionCode,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = now()
     where id = #{id,jdbcType=INTEGER}

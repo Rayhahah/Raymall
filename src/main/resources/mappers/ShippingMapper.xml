@@ -1,37 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.rayhahah.raymall.dao.ShippingMapper" >
-  <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.Shipping" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="receiver_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="receiver_phone" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="receiver_mobile" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="receiver_province" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="receiver_city" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="receiver_district" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="receiver_address" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="receiver_zip" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rayhahah.raymall.dao.ShippingMapper">
+  <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.Shipping">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="receiver_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_mobile" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_province" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_city" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_district" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_address" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="receiver_zip" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, user_id, receiver_name, receiver_phone, receiver_mobile, receiver_province, receiver_city, 
     receiver_district, receiver_address, receiver_zip, create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from raymall_shipping
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from raymall_shipping
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.Shipping" >
+  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.Shipping">
     insert into raymall_shipping (id, user_id, receiver_name, 
       receiver_phone, receiver_mobile, receiver_province, 
       receiver_city, receiver_district, receiver_address, 
@@ -43,125 +43,125 @@
       #{receiverZip,jdbcType=VARCHAR}, now(), now()
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.Shipping" >
+  <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.Shipping">
     insert into raymall_shipping
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         user_id,
       </if>
-      <if test="receiverName != null" >
+      <if test="receiverName != null">
         receiver_name,
       </if>
-      <if test="receiverPhone != null" >
+      <if test="receiverPhone != null">
         receiver_phone,
       </if>
-      <if test="receiverMobile != null" >
+      <if test="receiverMobile != null">
         receiver_mobile,
       </if>
-      <if test="receiverProvince != null" >
+      <if test="receiverProvince != null">
         receiver_province,
       </if>
-      <if test="receiverCity != null" >
+      <if test="receiverCity != null">
         receiver_city,
       </if>
-      <if test="receiverDistrict != null" >
+      <if test="receiverDistrict != null">
         receiver_district,
       </if>
-      <if test="receiverAddress != null" >
+      <if test="receiverAddress != null">
         receiver_address,
       </if>
-      <if test="receiverZip != null" >
+      <if test="receiverZip != null">
         receiver_zip,
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userId != null" >
+      <if test="userId != null">
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="receiverName != null" >
+      <if test="receiverName != null">
         #{receiverName,jdbcType=VARCHAR},
       </if>
-      <if test="receiverPhone != null" >
+      <if test="receiverPhone != null">
         #{receiverPhone,jdbcType=VARCHAR},
       </if>
-      <if test="receiverMobile != null" >
+      <if test="receiverMobile != null">
         #{receiverMobile,jdbcType=VARCHAR},
       </if>
-      <if test="receiverProvince != null" >
+      <if test="receiverProvince != null">
         #{receiverProvince,jdbcType=VARCHAR},
       </if>
-      <if test="receiverCity != null" >
+      <if test="receiverCity != null">
         #{receiverCity,jdbcType=VARCHAR},
       </if>
-      <if test="receiverDistrict != null" >
+      <if test="receiverDistrict != null">
         #{receiverDistrict,jdbcType=VARCHAR},
       </if>
-      <if test="receiverAddress != null" >
+      <if test="receiverAddress != null">
         #{receiverAddress,jdbcType=VARCHAR},
       </if>
-      <if test="receiverZip != null" >
+      <if test="receiverZip != null">
         #{receiverZip,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         now(),
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         now(),
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.Shipping" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.Shipping">
     update raymall_shipping
-    <set >
-      <if test="userId != null" >
+    <set>
+      <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="receiverName != null" >
+      <if test="receiverName != null">
         receiver_name = #{receiverName,jdbcType=VARCHAR},
       </if>
-      <if test="receiverPhone != null" >
+      <if test="receiverPhone != null">
         receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
       </if>
-      <if test="receiverMobile != null" >
+      <if test="receiverMobile != null">
         receiver_mobile = #{receiverMobile,jdbcType=VARCHAR},
       </if>
-      <if test="receiverProvince != null" >
+      <if test="receiverProvince != null">
         receiver_province = #{receiverProvince,jdbcType=VARCHAR},
       </if>
-      <if test="receiverCity != null" >
+      <if test="receiverCity != null">
         receiver_city = #{receiverCity,jdbcType=VARCHAR},
       </if>
-      <if test="receiverDistrict != null" >
+      <if test="receiverDistrict != null">
         receiver_district = #{receiverDistrict,jdbcType=VARCHAR},
       </if>
-      <if test="receiverAddress != null" >
+      <if test="receiverAddress != null">
         receiver_address = #{receiverAddress,jdbcType=VARCHAR},
       </if>
-      <if test="receiverZip != null" >
+      <if test="receiverZip != null">
         receiver_zip = #{receiverZip,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.Shipping" >
+  <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.Shipping">
     update raymall_shipping
     set user_id = #{userId,jdbcType=INTEGER},
       receiver_name = #{receiverName,jdbcType=VARCHAR},

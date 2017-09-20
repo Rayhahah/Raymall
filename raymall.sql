@@ -224,3 +224,100 @@ INSERT INTO `raymall_user` VALUES ('1', 'admin', '427338237BD929443EC5D48E24FD2B
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+-- ----------------------------
+--  Table structure for `easysport_user`
+-- ----------------------------
+DROP TABLE IF EXISTS `easysport_user`;
+CREATE TABLE `easysport_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户表id',
+  `username` varchar(50) NOT NULL COMMENT '用户名',
+  `password` varchar(50) NOT NULL COMMENT '用户密码，MD5加密',
+  `screenname` varchar(50) NOT NULL COMMENT '昵称',
+  `email` varchar(50) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `cover` text DEFAULT NULL COMMENT '头像',
+  `question` varchar(100) NOT NULL COMMENT '找回密码问题',
+  `answer` varchar(100) NOT NULL COMMENT '找回密码答案',
+  `hupu_username` varchar(50) DEFAULT NULL COMMENT '虎扑用户名',
+  `hupu_password` varchar(50) DEFAULT NULL COMMENT '虎扑用户密码，MD5加密',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_name_unique` (`username`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `easysport_crashmessage`
+-- ----------------------------
+DROP TABLE IF EXISTS `easysport_crashmessage`;
+CREATE TABLE `easysport_crashmessage` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '异常收集表id',
+  `user_id` int(11) DEFAULT NULL COMMENT '错误用户id',
+  `version_name` varchar(50) NOT NULL COMMENT '版本号',
+  `version_code` varchar(50) NOT NULL COMMENT '版本码',
+  `device_info` text DEFAULT NULL COMMENT '设备信息',
+  `exception_info` text DEFAULT NULL COMMENT '异常信息',
+  `system_info` text DEFAULT NULL COMMENT '系统信息',
+  `secure_info` text DEFAULT NULL COMMENT '安全设定信息',
+  `memory_info` text DEFAULT NULL COMMENT '内存信息',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Table structure for `easysport_comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `easysport_comment`;
+CREATE TABLE `easysport_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户反馈表id',
+  `user_id` int(11) NOT NULL COMMENT '反馈用户id',
+  `version_name` varchar(50) NOT NULL COMMENT '版本号',
+  `version_code` varchar(50) NOT NULL COMMENT '版本码',
+  `comment` text DEFAULT NULL COMMENT '反馈意见',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+--  Table structure for `easysport_live`
+-- ----------------------------
+DROP TABLE IF EXISTS `easysport_live`;
+CREATE TABLE `easysport_live` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户直播表id',
+  `username` varchar(50) NOT NULL COMMENT '用户名',
+  `screenname` varchar(50) NOT NULL COMMENT '昵称',
+  `push_url` text NOT NULL COMMENT '推流地址',
+  `stream_id` text NOT NULL COMMENT '直播码',
+  `rtmp_url` text DEFAULT NULL COMMENT '播放地址 (RTMP)',
+  `flv_url` text DEFAULT NULL COMMENT '播放地址 (FLV)',
+  `hls_url` text DEFAULT NULL COMMENT '播放地址 (HLS)',
+  `pic_url` text DEFAULT NULL COMMENT '直播截图资源',
+  `video_url` text DEFAULT NULL COMMENT '直播点播资源',
+  `live_status` varchar(50) DEFAULT NULL COMMENT '直播状态',
+  `file_format` varchar(50) DEFAULT NULL COMMENT '文件格式',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+--  Table structure for `easysport_version`
+-- ----------------------------
+DROP TABLE IF EXISTS `easysport_version`;
+CREATE TABLE `easysport_version` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'EasySport版本表id',
+  `version_name` varchar(50) NOT NULL COMMENT '版本名',
+  `version_code` varchar(50) NOT NULL COMMENT '版本码',
+  `description` text NOT NULL COMMENT '版本更新信息',
+  `url` text NOT NULL COMMENT 'app下载地址',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`),
+   UNIQUE KEY `version_name_unique` (`version_name`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rayhahah.raymall.dao.ESCrashMessageMapper">
+  <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.ESCrashMessage">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="version_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="version_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="device_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="exception_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="system_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="secure_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="memory_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_id, version_name, version_code, device_info, exception_info, system_info, 
+    secure_info, memory_info, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from easysport_crashmessage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from easysport_crashmessage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.ESCrashMessage">
+    insert into easysport_crashmessage (id, user_id, version_name, 
+      version_code, device_info, exception_info, 
+      system_info, secure_info, memory_info, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{versionName,jdbcType=VARCHAR}, 
+      #{versionCode,jdbcType=VARCHAR}, #{deviceInfo,jdbcType=VARCHAR}, #{exceptionInfo,jdbcType=VARCHAR}, 
+      #{systemInfo,jdbcType=VARCHAR}, #{secureInfo,jdbcType=VARCHAR}, #{memoryInfo,jdbcType=VARCHAR}, 
+      now(), now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.ESCrashMessage">
+    insert into easysport_crashmessage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="versionName != null">
+        version_name,
+      </if>
+      <if test="versionCode != null">
+        version_code,
+      </if>
+      <if test="deviceInfo != null">
+        device_info,
+      </if>
+      <if test="exceptionInfo != null">
+        exception_info,
+      </if>
+      <if test="systemInfo != null">
+        system_info,
+      </if>
+      <if test="secureInfo != null">
+        secure_info,
+      </if>
+      <if test="memoryInfo != null">
+        memory_info,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="versionName != null">
+        #{versionName,jdbcType=VARCHAR},
+      </if>
+      <if test="versionCode != null">
+        #{versionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceInfo != null">
+        #{deviceInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionInfo != null">
+        #{exceptionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="systemInfo != null">
+        #{systemInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="secureInfo != null">
+        #{secureInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="memoryInfo != null">
+        #{memoryInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        now(),
+      </if>
+      <if test="updateTime != null">
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.ESCrashMessage">
+    update easysport_crashmessage
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="versionName != null">
+        version_name = #{versionName,jdbcType=VARCHAR},
+      </if>
+      <if test="versionCode != null">
+        version_code = #{versionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceInfo != null">
+        device_info = #{deviceInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="exceptionInfo != null">
+        exception_info = #{exceptionInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="systemInfo != null">
+        system_info = #{systemInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="secureInfo != null">
+        secure_info = #{secureInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="memoryInfo != null">
+        memory_info = #{memoryInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.ESCrashMessage">
+    update easysport_crashmessage
+    set user_id = #{userId,jdbcType=INTEGER},
+      version_name = #{versionName,jdbcType=VARCHAR},
+      version_code = #{versionCode,jdbcType=VARCHAR},
+      device_info = #{deviceInfo,jdbcType=VARCHAR},
+      exception_info = #{exceptionInfo,jdbcType=VARCHAR},
+      system_info = #{systemInfo,jdbcType=VARCHAR},
+      secure_info = #{secureInfo,jdbcType=VARCHAR},
+      memory_info = #{memoryInfo,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
