@@ -1,37 +1,37 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.rayhahah.raymall.dao.ProductMapper" >
-  <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.Product" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="category_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="subtitle" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="main_image" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="sub_images" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="detail" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
-      <arg column="stock" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rayhahah.raymall.dao.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.Product">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="category_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="subtitle" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="main_image" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="sub_images" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="detail" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+      <arg column="stock" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, category_id, name, subtitle, main_image, sub_images, detail, price, stock, status, 
     create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from raymall_product
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from raymall_product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.Product" >
+  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.Product">
     insert into raymall_product (id, category_id, name, 
       subtitle, main_image, sub_images, 
       detail, price, stock, 
@@ -43,125 +43,125 @@
       #{status,jdbcType=INTEGER}, now(), now()
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.Product" >
+  <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.Product">
     insert into raymall_product
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="categoryId != null" >
+      <if test="categoryId != null">
         category_id,
       </if>
-      <if test="name != null" >
+      <if test="name != null">
         name,
       </if>
-      <if test="subtitle != null" >
+      <if test="subtitle != null">
         subtitle,
       </if>
-      <if test="mainImage != null" >
+      <if test="mainImage != null">
         main_image,
       </if>
-      <if test="subImages != null" >
+      <if test="subImages != null">
         sub_images,
       </if>
-      <if test="detail != null" >
+      <if test="detail != null">
         detail,
       </if>
-      <if test="price != null" >
+      <if test="price != null">
         price,
       </if>
-      <if test="stock != null" >
+      <if test="stock != null">
         stock,
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status,
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="categoryId != null" >
+      <if test="categoryId != null">
         #{categoryId,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
+      <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="subtitle != null" >
+      <if test="subtitle != null">
         #{subtitle,jdbcType=VARCHAR},
       </if>
-      <if test="mainImage != null" >
+      <if test="mainImage != null">
         #{mainImage,jdbcType=VARCHAR},
       </if>
-      <if test="subImages != null" >
+      <if test="subImages != null">
         #{subImages,jdbcType=VARCHAR},
       </if>
-      <if test="detail != null" >
+      <if test="detail != null">
         #{detail,jdbcType=VARCHAR},
       </if>
-      <if test="price != null" >
+      <if test="price != null">
         #{price,jdbcType=DECIMAL},
       </if>
-      <if test="stock != null" >
+      <if test="stock != null">
         #{stock,jdbcType=INTEGER},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         now(),
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         now(),
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.Product" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.Product">
     update raymall_product
-    <set >
-      <if test="categoryId != null" >
+    <set>
+      <if test="categoryId != null">
         category_id = #{categoryId,jdbcType=INTEGER},
       </if>
-      <if test="name != null" >
+      <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="subtitle != null" >
+      <if test="subtitle != null">
         subtitle = #{subtitle,jdbcType=VARCHAR},
       </if>
-      <if test="mainImage != null" >
+      <if test="mainImage != null">
         main_image = #{mainImage,jdbcType=VARCHAR},
       </if>
-      <if test="subImages != null" >
+      <if test="subImages != null">
         sub_images = #{subImages,jdbcType=VARCHAR},
       </if>
-      <if test="detail != null" >
+      <if test="detail != null">
         detail = #{detail,jdbcType=VARCHAR},
       </if>
-      <if test="price != null" >
+      <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
       </if>
-      <if test="stock != null" >
+      <if test="stock != null">
         stock = #{stock,jdbcType=INTEGER},
       </if>
-      <if test="status != null" >
+      <if test="status != null">
         status = #{status,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
+      <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
+      <if test="updateTime != null">
         update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.Product" >
+  <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.Product">
     update raymall_product
     set category_id = #{categoryId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},

@@ -244,6 +244,24 @@
       <artifactId>jedis</artifactId>
       <version>2.9.0</version>
     </dependency>
+      <!--<dependency>-->
+          <!--<groupId>com.mks.api</groupId>-->
+          <!--<artifactId>mksapi-jar</artifactId>-->
+          <!--<version>4.10.9049</version>-->
+      <!--</dependency>-->
+
+    <dependency>
+      <groupId>commons-httpclient</groupId>
+      <artifactId>commons-httpclient</artifactId>
+      <version>3.0.1</version>
+    </dependency>
+
+    <!-- httpclient-4.4 -->
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.4.1</version>
+    </dependency>
   </dependencies>
 
 

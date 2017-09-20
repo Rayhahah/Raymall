@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rayhahah.raymall.dao.ESLiveMapper">
+    <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.ESLive">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="screenname" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="push_url" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="stream_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="rtmp_url" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="flv_url" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="hls_url" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="pic_url" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="video_url" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="live_status" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="file_format" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, username, screenname, push_url, stream_id, rtmp_url, flv_url, hls_url, pic_url, 
+    video_url, live_status, file_format, create_time, update_time
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from easysport_live
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from easysport_live
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.rayhahah.raymall.pojo.ESLive">
+    insert into easysport_live (id, username, screenname, 
+      push_url, stream_id, rtmp_url, 
+      flv_url, hls_url, pic_url, 
+      video_url, live_status, file_format, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{screenname,jdbcType=VARCHAR}, 
+      #{pushUrl,jdbcType=VARCHAR}, #{streamId,jdbcType=VARCHAR}, #{rtmpUrl,jdbcType=VARCHAR}, 
+      #{flvUrl,jdbcType=VARCHAR}, #{hlsUrl,jdbcType=VARCHAR}, #{picUrl,jdbcType=VARCHAR}, 
+      #{videoUrl,jdbcType=VARCHAR}, #{liveStatus,jdbcType=VARCHAR}, #{fileFormat,jdbcType=VARCHAR}, 
+      now(), now())
+  </insert>
+    <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.ESLive">
+        insert into easysport_live
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="screenname != null">
+                screenname,
+            </if>
+            <if test="pushUrl != null">
+                push_url,
+            </if>
+            <if test="streamId != null">
+                stream_id,
+            </if>
+            <if test="rtmpUrl != null">
+                rtmp_url,
+            </if>
+            <if test="flvUrl != null">
+                flv_url,
+            </if>
+            <if test="hlsUrl != null">
+                hls_url,
+            </if>
+            <if test="picUrl != null">
+                pic_url,
+            </if>
+            <if test="videoUrl != null">
+                video_url,
+            </if>
+            <if test="liveStatus != null">
+                live_status,
+            </if>
+            <if test="fileFormat != null">
+                file_format,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="screenname != null">
+                #{screenname,jdbcType=VARCHAR},
+            </if>
+            <if test="pushUrl != null">
+                #{pushUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="streamId != null">
+                #{streamId,jdbcType=VARCHAR},
+            </if>
+            <if test="rtmpUrl != null">
+                #{rtmpUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="flvUrl != null">
+                #{flvUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="hlsUrl != null">
+                #{hlsUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="picUrl != null">
+                #{picUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="videoUrl != null">
+                #{videoUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="liveStatus != null">
+                #{liveStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="fileFormat != null">
+                #{fileFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                now(),
+            </if>
+            <if test="updateTime != null">
+                now(),
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.ESLive">
+        update easysport_live
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="screenname != null">
+                screenname = #{screenname,jdbcType=VARCHAR},
+            </if>
+            <if test="pushUrl != null">
+                push_url = #{pushUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="streamId != null">
+                stream_id = #{streamId,jdbcType=VARCHAR},
+            </if>
+            <if test="rtmpUrl != null">
+                rtmp_url = #{rtmpUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="flvUrl != null">
+                flv_url = #{flvUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="hlsUrl != null">
+                hls_url = #{hlsUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="picUrl != null">
+                pic_url = #{picUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="videoUrl != null">
+                video_url = #{videoUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="liveStatus != null">
+                live_status = #{liveStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="fileFormat != null">
+                file_format = #{fileFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = now(),
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.ESLive">
+    update easysport_live
+    set username = #{username,jdbcType=VARCHAR},
+      screenname = #{screenname,jdbcType=VARCHAR},
+      push_url = #{pushUrl,jdbcType=VARCHAR},
+      stream_id = #{streamId,jdbcType=VARCHAR},
+      rtmp_url = #{rtmpUrl,jdbcType=VARCHAR},
+      flv_url = #{flvUrl,jdbcType=VARCHAR},
+      hls_url = #{hlsUrl,jdbcType=VARCHAR},
+      pic_url = #{picUrl,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      live_status = #{liveStatus,jdbcType=VARCHAR},
+      file_format = #{fileFormat,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+    <update id="updateStatusByStreamId" parameterType="map">
+    update easysport_live
+    SET live_status = #{status},update_time = now()
+    where stream_id = #{streamId}
+  </update>
+    <update id="updatePicUrlByStreamId" parameterType="map">
+    update easysport_live
+    SET pic_url = #{picUrl},update_time = now()
+    where stream_id = #{streamId}
+  </update>
+    <update id="updateVideoUrlByStreamId">
+   update easysport_live
+    SET video_url = #{videoUrl},update_time = now()
+    where stream_id = #{streamId}
+    </update>
+
+    <select id="queryAllLiveByStatus" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM easysport_live
+        WHERE live_status = #{liveStatus}
+    </select>
+
+    <select id="queryLiveByUsername" parameterType="string" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM easysport_live
+        WHERE username = #{username}
+    </select>
+
+</mapper>

@@ -65,23 +65,63 @@
         <!--<javaClientGenerator type="XMLMAPPER" targetPackage="com.raymall.dao" targetProject=".\src\main\java">-->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.rayhahah.raymall.dao" targetProject="./src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
-            <property name="enableSubPackages" value="false" />
+            <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
 
-        <table tableName="raymall_shipping" domainObjectName="Shipping" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="raymall_cart" domainObjectName="Cart" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="raymall_cart_item" domainObjectName="CartItem" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="raymall_category" domainObjectName="Category" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="raymall_order" domainObjectName="Order" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="raymall_order_item" domainObjectName="OrderItem" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="raymall_pay_info" domainObjectName="PayInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="raymall_product" domainObjectName="Product" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <columnOverride column="detail" jdbcType="VARCHAR" />
-            <columnOverride column="sub_images" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="raymall_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <!--<table tableName="raymall_shipping" domainObjectName="Shipping" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="raymall_cart" domainObjectName="Cart" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="raymall_cart_item" domainObjectName="CartItem" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="raymall_category" domainObjectName="Category" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="raymall_order" domainObjectName="Order" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="raymall_order_item" domainObjectName="OrderItem" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="raymall_pay_info" domainObjectName="PayInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="raymall_product" domainObjectName="Product" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--<columnOverride column="detail" jdbcType="VARCHAR" />-->
+        <!--<columnOverride column="sub_images" jdbcType="VARCHAR" />-->
+        <!--</table>-->
+        <!--<table tableName="raymall_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
 
+
+        <!--<table tableName="easysport_user" domainObjectName="ESUser" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<columnOverride column="cover" jdbcType="VARCHAR"/>-->
+        <!--</table>-->
+        <!--<table tableName="easysport_crashmessage" domainObjectName="ESCrashMessage" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<columnOverride column="device_info" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="exception_info" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="system_info" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="secure_info" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="memory_info" jdbcType="VARCHAR"/>-->
+        <!--</table>-->
+        <!--<table tableName="easysport_comment" domainObjectName="ESComment" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<columnOverride column="comment" jdbcType="VARCHAR"/>-->
+        <!--</table>-->
+
+        <!--<table tableName="easysport_live" domainObjectName="ESLive" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<columnOverride column="push_url" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="stream_id" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="rtmp_url" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="flv_url" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="hls_url" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="pic_url" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="video_url" jdbcType="VARCHAR"/>-->
+        <!--</table>-->
+
+
+        <!--<table tableName="easysport_version" domainObjectName="ESVersion" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<columnOverride column="description" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="url" jdbcType="VARCHAR"/>-->
+        <!--</table>-->
 
         <!-- geelynote mybatis插件的搭建 -->
     </context>

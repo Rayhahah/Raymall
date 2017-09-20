@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rayhahah.raymall.dao.ESUserMapper">
+  <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.ESUser">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="screenname" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="cover" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="question" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="answer" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="hupu_username" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="hupu_password" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, username, password, screenname, email, phone, cover, question, answer, hupu_username, 
+    hupu_password, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from easysport_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from easysport_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.ESUser">
+    insert into easysport_user (id, username, password, 
+      screenname, email, phone, 
+      cover, question, answer, 
+      hupu_username, hupu_password, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{screenname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{cover,jdbcType=VARCHAR}, #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, 
+      #{hupuUsername,jdbcType=VARCHAR}, #{hupuPassword,jdbcType=VARCHAR}, now(),
+      now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.ESUser">
+    insert into easysport_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="screenname != null">
+        screenname,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="cover != null">
+        cover,
+      </if>
+      <if test="question != null">
+        question,
+      </if>
+      <if test="answer != null">
+        answer,
+      </if>
+      <if test="hupuUsername != null">
+        hupu_username,
+      </if>
+      <if test="hupuPassword != null">
+        hupu_password,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="screenname != null">
+        #{screenname,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="cover != null">
+        #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="hupuUsername != null">
+        #{hupuUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="hupuPassword != null">
+        #{hupuPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        now(),
+      </if>
+      <if test="updateTime != null">
+        now(),
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.ESUser">
+    update easysport_user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="screenname != null">
+        screenname = #{screenname,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="cover != null">
+        cover = #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="question != null">
+        question = #{question,jdbcType=VARCHAR},
+      </if>
+      <if test="answer != null">
+        answer = #{answer,jdbcType=VARCHAR},
+      </if>
+      <if test="hupuUsername != null">
+        hupu_username = #{hupuUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="hupuPassword != null">
+        hupu_password = #{hupuPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.ESUser">
+    update easysport_user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      screenname = #{screenname,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      cover = #{cover,jdbcType=VARCHAR},
+      question = #{question,jdbcType=VARCHAR},
+      answer = #{answer,jdbcType=VARCHAR},
+      hupu_username = #{hupuUsername,jdbcType=VARCHAR},
+      hupu_password = #{hupuPassword,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="queryByUsername" parameterType="string" resultMap="BaseResultMap" >
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM easysport_user
+    WHERE username= #{username}
+  </select>
+
+
+  <select id="checkUsername" resultType="int" parameterType="string" >
+    select count(1) from easysport_user
+    where username = #{username}
+  </select>
+
+  <select id="checkEmail" resultType="int" parameterType="string" >
+    select count(1) from easysport_user
+    where email = #{email}
+  </select>
+
+
+  <select id="selectQuestionByUsername" resultType="string" parameterType="string">
+    select
+    question
+    from easysport_user
+    where username = #{username}
+  </select>
+
+  <select id="checkAnswer" resultType="int" parameterType="map">
+    SELECT
+    count(1)
+    from easysport_user
+    where username=#{username}
+    and question = #{question}
+    and answer = #{answer}
+  </select>
+
+  <update id="updatePasswordByUsername" parameterType="map">
+    update easysport_user
+    SET password = #{passwordNew},update_time = now()
+    where username = #{username}
+  </update>
+
+  <update id="updateHupuByUsername" parameterType="map">
+    update easysport_user
+    SET hupu_username = #{hupuUsername},hupu_password = #{hupuPassword},update_time = now()
+    where username = #{username}
+  </update>
+
+  <update id="updateCoverByUsername" parameterType="map">
+    update easysport_user
+    SET cover = #{cover},update_time = now()
+    where username = #{username}
+  </update>
+
+</mapper>
