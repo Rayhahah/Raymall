@@ -1,5 +1,8 @@
 package com.rayhahah.raymall.service.easysport;
 
+import com.rayhahah.raymall.common.ServerResponse;
+import com.rayhahah.raymall.pojo.ESVersion;
+
 /**
  * @author Rayhahah
  * @blog http://rayhahah.com
@@ -8,4 +11,5 @@ package com.rayhahah.raymall.service.easysport;
  * @fuction
  */
 public interface IESVersionService {
+    ServerResponse<ESVersion> checkVersion();
 }

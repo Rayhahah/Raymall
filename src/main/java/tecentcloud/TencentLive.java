@@ -133,7 +133,6 @@ public class TencentLive {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 //		String sendurl = preUrl + "?appid=" + appid + "&interface="+ actionName + "&t=" + t + "&sign=" + sign;

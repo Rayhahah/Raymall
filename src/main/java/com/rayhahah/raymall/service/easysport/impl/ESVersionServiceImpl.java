@@ -1,6 +1,9 @@
 package com.rayhahah.raymall.service.easysport.impl;
 
+import com.rayhahah.raymall.common.ServerResponse;
 import com.rayhahah.raymall.dao.ESVersionMapper;
+import com.rayhahah.raymall.pojo.ESVersion;
+import com.rayhahah.raymall.service.easysport.IESVersionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +15,17 @@ import org.springframework.stereotype.Service;
  * @fuction
  */
 @Service("iESVersionService")
-public class ESVersionServiceImpl {
+public class ESVersionServiceImpl implements IESVersionService {
 
     @Autowired
     private ESVersionMapper esVersionMapper;
 
+    @Override
+    public ServerResponse<ESVersion> checkVersion() {
+        ESVersion esVersion = esVersionMapper.queryLatestVersion();
+        if (esVersion != null) {
+            return ServerResponse.createBySuccess("获取版本信息成功",esVersion);
+        }
+        return ServerResponse.createByErrorMessage("当前没有最新版本");
+    }
 }
