@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.rayhahah.raymall.dao.ESVersionMapper" >
-  <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.ESVersion" >
-    <constructor >
-      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="version_name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="version_code" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
-    </constructor>
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.rayhahah.raymall.dao.ESVersionMapper">
+    <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.ESVersion">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="version_name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="version_code" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="description" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
     id, version_name, version_code, description, url, create_time, update_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from easysport_version
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from easysport_version
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from easysport_version
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.ESVersion" >
+    <insert id="insert" parameterType="com.rayhahah.raymall.pojo.ESVersion">
     insert into easysport_version (id, version_name, version_code, 
       description, url, create_time, 
       update_time)
@@ -33,80 +34,80 @@
       #{description,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, now(),
       now())
   </insert>
-  <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.ESVersion" >
-    insert into easysport_version
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="versionName != null" >
-        version_name,
-      </if>
-      <if test="versionCode != null" >
-        version_code,
-      </if>
-      <if test="description != null" >
-        description,
-      </if>
-      <if test="url != null" >
-        url,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="updateTime != null" >
-        update_time,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="versionName != null" >
-        #{versionName,jdbcType=VARCHAR},
-      </if>
-      <if test="versionCode != null" >
-        #{versionCode,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null" >
-        #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        now(),
-      </if>
-      <if test="updateTime != null" >
-        now(),
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.ESVersion" >
-    update easysport_version
-    <set >
-      <if test="versionName != null" >
-        version_name = #{versionName,jdbcType=VARCHAR},
-      </if>
-      <if test="versionCode != null" >
-        version_code = #{versionCode,jdbcType=VARCHAR},
-      </if>
-      <if test="description != null" >
-        description = #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        url = #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="updateTime != null" >
-        update_time = now(),
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.ESVersion" >
+    <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.ESVersion">
+        insert into easysport_version
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="versionName != null">
+                version_name,
+            </if>
+            <if test="versionCode != null">
+                version_code,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="versionName != null">
+                #{versionName,jdbcType=VARCHAR},
+            </if>
+            <if test="versionCode != null">
+                #{versionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                now(),
+            </if>
+            <if test="updateTime != null">
+                now(),
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.ESVersion">
+        update easysport_version
+        <set>
+            <if test="versionName != null">
+                version_name = #{versionName,jdbcType=VARCHAR},
+            </if>
+            <if test="versionCode != null">
+                version_code = #{versionCode,jdbcType=VARCHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = now(),
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.ESVersion">
     update easysport_version
     set version_name = #{versionName,jdbcType=VARCHAR},
       version_code = #{versionCode,jdbcType=VARCHAR},
@@ -116,4 +117,11 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <select id="queryLatestVersion" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM easysport_version
+        WHERE id=(SELECT max(id) FROM easysport_version)
+    </select>
 </mapper>

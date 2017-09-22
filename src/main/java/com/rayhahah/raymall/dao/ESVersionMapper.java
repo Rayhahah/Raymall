@@ -14,4 +14,6 @@ public interface ESVersionMapper {
     int updateByPrimaryKeySelective(ESVersion record);
 
     int updateByPrimaryKey(ESVersion record);
+
+    ESVersion queryLatestVersion();
 }

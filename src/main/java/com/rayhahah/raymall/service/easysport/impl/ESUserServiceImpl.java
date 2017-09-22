@@ -275,7 +275,7 @@ public class ESUserServiceImpl implements IESUserService {
         if (userInfo.isSuccess()) {
             int count = esUserMapper.updateCoverByUsername(username, cover);
             if (count > 0) {
-                return ServerResponse.createBySuccess("上传头像成功");
+                return ServerResponse.createBySuccess("上传头像成功", cover);
             }
         }
         return ServerResponse.createByErrorMessage("上传头像失败");
