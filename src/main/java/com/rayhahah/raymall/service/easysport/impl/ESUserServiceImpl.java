@@ -56,7 +56,7 @@ public class ESUserServiceImpl implements IESUserService {
         }
         user.setPassword(MD5Util.MD5EncodeUtf8(password));
         if (StringUtils.isNotBlank(user.getHupuPassword())) {
-            user.setHupuPassword(MD5Util.MD5EncodeUtf8(user.getHupuPassword()));
+            user.setHupuPassword(user.getHupuPassword());
         }
         int count = esUserMapper.insert(user);
         if (count > 0) {
@@ -229,7 +229,7 @@ public class ESUserServiceImpl implements IESUserService {
     public ServerResponse<String> updateHupuInfo(String username, String password, String hupuUsername, String hupuPassword) {
         ServerResponse<ESUser> userInfo = getUserInfo(username, password);
         if (userInfo.isSuccess()) {
-            int count = esUserMapper.updateHupuByUsername(username, hupuUsername, MD5Util.MD5EncodeUtf8(hupuPassword));
+            int count = esUserMapper.updateHupuByUsername(username, hupuUsername, hupuPassword);
             if (count > 0) {
                 return ServerResponse.createBySuccess("设置信息成功");
             }

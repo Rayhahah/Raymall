@@ -1,5 +1,10 @@
 package com.rayhahah.raymall.util;
 
+import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -8,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 
-public class DateUtil {
+public class DateTimeUtil {
 	/**
 	 * 默认的日期格式
 	 */
@@ -45,7 +50,7 @@ public class DateUtil {
 	
 	public static final String getFirstDateOfMonth(String date){
 		Calendar c = Calendar.getInstance();
-		c.setTime(DateUtil.formatDate(date));
+		c.setTime(DateTimeUtil.formatDate(date));
 		c.set(Calendar.DAY_OF_MONTH, 1);
 		
 		return dateFormat.format(c.getTime());
@@ -53,7 +58,7 @@ public class DateUtil {
 	
 	public static final String getLastDateOfPrevMonth(String date){
 		Calendar c = Calendar.getInstance();
-		c.setTime(DateUtil.formatDate(date));
+		c.setTime(DateTimeUtil.formatDate(date));
 		c.set(Calendar.DAY_OF_MONTH, 1);
 		c.add(Calendar.DATE, -1);
 		
@@ -465,6 +470,42 @@ public class DateUtil {
 			e.printStackTrace();
 		}
 		return "";
+	}
+
+	//joda-time
+
+	//str->Date
+	//Date->str
+	public static final String STANDARD_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+
+
+	public static Date strToDate(String dateTimeStr,String formatStr){
+		DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(formatStr);
+		DateTime dateTime = dateTimeFormatter.parseDateTime(dateTimeStr);
+		return dateTime.toDate();
+	}
+
+	public static String dateToStr(Date date,String formatStr){
+		if(date == null){
+			return StringUtils.EMPTY;
+		}
+		DateTime dateTime = new DateTime(date);
+		return dateTime.toString(formatStr);
+	}
+
+	public static Date strToDate(String dateTimeStr){
+		DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(STANDARD_FORMAT);
+		DateTime dateTime = dateTimeFormatter.parseDateTime(dateTimeStr);
+		return dateTime.toDate();
+	}
+
+	public static String dateToStr(Date date){
+		if(date == null){
+			return StringUtils.EMPTY;
+		}
+		DateTime dateTime = new DateTime(date);
+		return dateTime.toString(STANDARD_FORMAT);
 	}
 
 }

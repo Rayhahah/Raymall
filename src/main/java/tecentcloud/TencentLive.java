@@ -1,7 +1,7 @@
 package tecentcloud;
 
 import com.rayhahah.raymall.pojo.ESLive;
-import com.rayhahah.raymall.util.DateUtil;
+import com.rayhahah.raymall.util.DateTimeUtil;
 import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -42,7 +42,7 @@ public class TencentLive {
         String hlsUrl = ""; //播放地址 (HLS)
         streamId = LiveConfig.bizid + "_easysport" + chars.charAt((int) (Math.random() * 26)) + Long.toHexString(new Date().getTime()).toUpperCase().toString();
         // 拼接直播码
-        String safeUrl = getSafeUrl(LiveConfig.fandaokey, streamId, DateUtil.getDateLater2(new Date(), second).getTime() / 1000);
+        String safeUrl = getSafeUrl(LiveConfig.fandaokey, streamId, DateTimeUtil.getDateLater2(new Date(), second).getTime() / 1000);
         resultUrl += "rtmp://" + LiveConfig.bizid + ".livepush.myqcloud.com/live/" + streamId + "?bizid=" + LiveConfig.bizid + "&" + safeUrl;
         rtmpUrl += "rtmp://" + LiveConfig.bizid + ".liveplay.myqcloud.com/live/" + streamId;
         flvUrl += "http://" + LiveConfig.bizid + ".liveplay.myqcloud.com/live/" + streamId + ".flv";
@@ -75,7 +75,7 @@ public class TencentLive {
         httpClient.getParams().setContentCharset("UTF-8");
         // "http://statcgi.video.qcloud.com/common_access?appid=" LiveConfig.appid + "&interface=Get_LiveStat&t="+t+"&sign="+sign;
         try {
-            t = DateUtil.getDateLater(new Date(), 100).getTime() / 1000;
+            t = DateTimeUtil.getDateLater(new Date(), 100).getTime() / 1000;
             String params = apikey + t; // key+有效截止时间戳
             MessageDigest messageDigest = MessageDigest.getInstance("MD5");
             sign = byteArrayToHexString(messageDigest.digest(params.getBytes("UTF-8")));
@@ -165,7 +165,7 @@ public class TencentLive {
         String actionName = "Live_Channel_GetChannelList";
         String result = "";
         Calendar calendar = Calendar.getInstance();
-        String t = DateUtil.date2TimeStamp("2119-01-01 00:00:00", "yyyy-MM-dd HH:mm:ss");// 有效截止时间戳
+        String t = DateTimeUtil.date2TimeStamp("2119-01-01 00:00:00", "yyyy-MM-dd HH:mm:ss");// 有效截止时间戳
         String sign = null; // md5(key+有效截止时间戳)
         HttpClient httpClient = new HttpClient();
         httpClient.getParams().setContentCharset("UTF-8");
