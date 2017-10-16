@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by geely
+ * @author Rayhahah
+ * @blog http://rayhahah.com
+ * @time 2017/10/16
+ * @tips 这个类是Object的子类
+ * @fuction
  */
-
 @Controller
 @RequestMapping("/product/")
 public class ProductController {

@@ -321,3 +321,17 @@ CREATE TABLE `easysport_version` (
   PRIMARY KEY (`id`),
    UNIQUE KEY `version_name_unique` (`version_name`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+--  Table structure for `jijian_appip`
+-- ----------------------------
+DROP TABLE IF EXISTS `jijian_appip`;
+CREATE TABLE `jijian_appip` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '基建宝访问IP的ID',
+  `name` varchar(50) NOT NULL COMMENT '访问地址名',
+  `url` text NOT NULL COMMENT '访问地址资源',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

@@ -123,6 +123,13 @@
             <!--<columnOverride column="url" jdbcType="VARCHAR"/>-->
         <!--</table>-->
 
+
+        <!--<table tableName="jijian_appip" domainObjectName="JiJianAppIp" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<columnOverride column="url" jdbcType="VARCHAR"/>-->
+        <!--</table>-->
+
         <!-- geelynote mybatis插件的搭建 -->
     </context>
 </generatorConfiguration>

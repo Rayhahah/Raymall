@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by rayhahah
+ * @author Rayhahah
+ * @blog http://rayhahah.com
+ * @time 2017/10/16
+ * @tips 这个类是Object的子类
+ * @fuction
  */
 @Controller
 @RequestMapping("/user/")
