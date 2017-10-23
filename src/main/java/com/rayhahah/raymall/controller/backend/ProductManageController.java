@@ -25,8 +25,8 @@ import java.util.Map;
 
 /**
  * Created by Rayhahah
+ * 后台商品管理模块
  */
-
 @Controller
 @RequestMapping("/manage/product")
 public class ProductManageController {

@@ -83,7 +83,6 @@ public class HttpClientUtil {
         
         //2.构造PostMethod的实例
         PostMethod postMethod=new PostMethod(url);
-        
         //3.把参数值放入到PostMethod对象中
         //方式1：
 /*        NameValuePair[] data = { new NameValuePair("param1", param1),

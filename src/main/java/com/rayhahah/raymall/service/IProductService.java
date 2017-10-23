@@ -6,7 +6,11 @@ import com.rayhahah.raymall.pojo.Product;
 import com.rayhahah.raymall.vo.ProductDetailVo;
 
 /**
- * Created by geely
+ * @author Rayhahah
+ * @blog http://rayhahah.com
+ * @time 2017/8/30
+ * @tips 这个类是Object的子类
+ * @fuction
  */
 public interface IProductService {
 

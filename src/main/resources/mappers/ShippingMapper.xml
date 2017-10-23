@@ -31,7 +31,7 @@
     delete from raymall_shipping
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.Shipping">
+  <insert id="insert" parameterType="com.rayhahah.raymall.pojo.Shipping" useGeneratedKeys="true" keyProperty="id">
     insert into raymall_shipping (id, user_id, receiver_name, 
       receiver_phone, receiver_mobile, receiver_province, 
       receiver_city, receiver_district, receiver_address, 
@@ -176,4 +176,48 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+
+  <delete id="deleteByShippingIdUserId" parameterType="map">
+    DELETE  FROM  raymall_shipping
+    where id = #{shippingId}
+    and user_id = #{userId}
+  </delete>
+
+  <update id="updateByShipping" parameterType="com.rayhahah.raymall.pojo.Shipping">
+    update raymall_shipping
+    set
+    receiver_name = #{receiverName,jdbcType=VARCHAR},
+    receiver_phone = #{receiverPhone,jdbcType=VARCHAR},
+    receiver_mobile = #{receiverMobile,jdbcType=VARCHAR},
+    receiver_province = #{receiverProvince,jdbcType=VARCHAR},
+    receiver_city = #{receiverCity,jdbcType=VARCHAR},
+    receiver_district = #{receiverDistrict,jdbcType=VARCHAR},
+    receiver_address = #{receiverAddress,jdbcType=VARCHAR},
+    receiver_zip = #{receiverZip,jdbcType=VARCHAR},
+    create_time = #{createTime,jdbcType=TIMESTAMP},
+    update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+    and user_id = #{userId,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="selectByShippingIdUserId" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from raymall_shipping
+    where id = #{shippingId}
+    and user_id = #{userId}
+  </select>
+
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="map">
+    SELECT
+    <include refid="Base_Column_List"/>
+    from raymall_shipping
+    where user_id = #{userId}
+  </select>
+
+
 </mapper>

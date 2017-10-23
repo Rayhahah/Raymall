@@ -1,10 +1,10 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : 182.92.82.103
+ Source Server         : 120.77.158.19
  Source Server Type    : MySQL
  Source Server Version : 50173
- Source Host           : 182.92.82.103
+ Source Host           : 120.77.158.19
  Source Database       : raymall
 
  Target Server Type    : MySQL
