@@ -479,11 +479,12 @@ public class OrderServiceImpl implements IOrderService {
 
     // 简单打印应答
     private void dumpResponse(AlipayResponse response) {
+
         if (response != null) {
             logger.info(String.format("code:%s, msg:%s", response.getCode(), response.getMsg()));
             if (StringUtils.isNotEmpty(response.getSubCode())) {
-                logger.info(String.format("subCode:%s, subMsg:%s", response.getSubCode(),
-                        response.getSubMsg()));
+                logger.info(String.format("subCode:%s", response.getSubCode()));
+                logger.info(String.format("subMsg:%s", response.getSubMsg()));
             }
             logger.info("body:" + response.getBody());
         }
