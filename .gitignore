@@ -10,6 +10,11 @@
 #maven ignore
 target/
 
+#前端
+/dist/
+/node_modules/
+
+
 #eclipse igonre
 .setting/
 .project
