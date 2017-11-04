@@ -55,5 +55,15 @@
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
 
+    <!--设置跨域完全允许-->
+    <filter>
+        <filter-name>contextFilter</filter-name>
+        <filter-class>com.rayhahah.raymall.util.WebContextFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>contextFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>
 
