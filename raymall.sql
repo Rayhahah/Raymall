@@ -335,3 +335,19 @@ CREATE TABLE `jijian_appip` (
   `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+--  Table structure for `jijian_location`
+-- ----------------------------
+DROP TABLE IF EXISTS `jijian_location`;
+CREATE TABLE `jijian_location` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '坐标id',
+  `username` varchar(50) NOT NULL COMMENT '坐标用户名',
+  `latitude` text NOT NULL COMMENT '纬度',
+  `longtitude` text NOT NULL COMMENT '经度',
+  `time` bigint(20) NOT NULL COMMENT '坐标产生时间',
+   `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
