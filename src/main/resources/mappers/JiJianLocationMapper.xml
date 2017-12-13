@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rayhahah.raymall.dao.JiJianLocationMapper">
+    <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.JiJianLocation">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="latitude" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="longtitude" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="time" jdbcType="BIGINT" javaType="java.lang.Long"/>
+            <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, username, latitude, longtitude, time, create_time, update_time
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from jijian_location
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jijian_location
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.rayhahah.raymall.pojo.JiJianLocation">
+    insert into jijian_location (id, username, latitude, 
+      longtitude, time, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
+      #{longtitude,jdbcType=VARCHAR}, #{time,jdbcType=BIGINT},now(),
+      now())
+  </insert>
+    <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.JiJianLocation">
+        insert into jijian_location
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="latitude != null">
+                latitude,
+            </if>
+            <if test="longtitude != null">
+                longtitude,
+            </if>
+            <if test="time != null">
+                time,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null">
+                #{latitude,jdbcType=VARCHAR},
+            </if>
+            <if test="longtitude != null">
+                #{longtitude,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                now(),
+            </if>
+            <if test="updateTime != null">
+                now(),
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.JiJianLocation">
+        update jijian_location
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null">
+                latitude = #{latitude,jdbcType=VARCHAR},
+            </if>
+            <if test="longtitude != null">
+                longtitude = #{longtitude,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                time = #{time,jdbcType=BIGINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = now(),
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.JiJianLocation">
+    update jijian_location
+    set username = #{username,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
+      longtitude = #{longtitude,jdbcType=VARCHAR},
+      time = #{time,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

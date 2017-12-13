@@ -130,6 +130,14 @@
             <!--<columnOverride column="url" jdbcType="VARCHAR"/>-->
         <!--</table>-->
 
+
+        <!--<table tableName="jijian_location" domainObjectName="JiJianLocation" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<columnOverride column="latitude" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="longtitude" jdbcType="VARCHAR"/>-->
+        <!--</table>-->
+
         <!-- geelynote mybatis插件的搭建 -->
     </context>
 </generatorConfiguration>
