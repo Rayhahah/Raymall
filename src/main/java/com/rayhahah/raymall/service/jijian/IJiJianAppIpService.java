@@ -12,4 +12,8 @@ import com.rayhahah.raymall.pojo.JiJianAppIp;
  */
 public interface IJiJianAppIpService {
     ServerResponse<JiJianAppIp> getUrlByName(String name);
+
+    ServerResponse<JiJianAppIp> insertUrlByName(String name, String url);
+
+    ServerResponse<JiJianAppIp> updateUrlByName(String name, String url);
 }

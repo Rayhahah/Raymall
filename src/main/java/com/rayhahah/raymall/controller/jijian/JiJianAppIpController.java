@@ -35,4 +35,25 @@ public class JiJianAppIpController {
         }
     }
 
+    @RequestMapping(value = "insert_url.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<JiJianAppIp> insertUrl(String name, String url) {
+        if (StringUtils.isNotBlank(name)) {
+            return iJiJianAppIpService.insertUrlByName(name, url);
+        } else {
+            return ServerResponse.createByErrorMessage("name不能为空");
+        }
+    }
+
+    @RequestMapping(value = "update_url.do", method = RequestMethod.POST)
+    @ResponseBody
+    public ServerResponse<JiJianAppIp> updateUrl(String name, String url) {
+        if (StringUtils.isNotBlank(name)) {
+            return iJiJianAppIpService.updateUrlByName(name, url);
+        } else {
+            return ServerResponse.createByErrorMessage("name不能为空");
+        }
+    }
+
+
 }
