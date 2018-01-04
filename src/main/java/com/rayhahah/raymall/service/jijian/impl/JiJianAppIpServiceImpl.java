@@ -29,4 +29,38 @@ public class JiJianAppIpServiceImpl implements IJiJianAppIpService {
             return ServerResponse.createByErrorMessage("没有找到相关信息");
         }
     }
+
+    @Override
+    public ServerResponse<JiJianAppIp> insertUrlByName(String name, String url) {
+        JiJianAppIp appIp = jiJianAppIpMapper.queryByName(name);
+        if (appIp == null) {
+            JiJianAppIp jianAppIp = new JiJianAppIp();
+            jianAppIp.setName(name);
+            jianAppIp.setUrl(url);
+            int insert = jiJianAppIpMapper.insert(jianAppIp);
+            if (insert > 0) {
+                return ServerResponse.createBySuccess("获取访问信息成功", appIp);
+            } else {
+                return ServerResponse.createByErrorMessage("新增失败~");
+            }
+        } else {
+            return ServerResponse.createByErrorMessage("name已存在/(ㄒoㄒ)/~~");
+        }
+    }
+
+    @Override
+    public ServerResponse<JiJianAppIp> updateUrlByName(String name, String url) {
+        JiJianAppIp appIp = jiJianAppIpMapper.queryByName(name);
+        if (appIp == null) {
+            return ServerResponse.createByErrorMessage("name不存在/(ㄒoㄒ)/~~");
+        } else {
+            appIp.setUrl(url);
+            int update = jiJianAppIpMapper.updateByPrimaryKeySelective(appIp);
+            if (update > 0) {
+                return ServerResponse.createBySuccess("更新数据成功", appIp);
+            } else {
+                return ServerResponse.createByErrorMessage("更新数据失败");
+            }
+        }
+    }
 }
