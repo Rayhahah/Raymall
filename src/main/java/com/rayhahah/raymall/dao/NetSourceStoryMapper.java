@@ -24,5 +24,4 @@ public interface NetSourceStoryMapper {
                                @Param("content")String content,
                                @Param("category")String category,
                                @Param("label")String label);
-
 }

@@ -1,24 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.rayhahah.raymall.dao.NetSourceStoryMapper">
     <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.NetSourceStory">
         <constructor>
-            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
-            <arg column="story_from" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="story_title" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="story_content" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="story_category" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="story_label" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="story_hot" jdbcType="VARCHAR" javaType="java.lang.String"/>
-            <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
-            <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+            <arg column="story_from" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="url" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="url_object_id" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="story_title" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="story_content" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="story_category" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="story_label" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="story_hot" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">
-    id, story_from, story_title, story_content, story_category, story_label, story_hot, 
-    create_time, update_time
+    id, story_from, url, url_object_id, story_title, story_content, story_category, story_label, 
+    story_hot, create_time, update_time
   </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from netsource_story
@@ -30,14 +32,14 @@
   </delete>
     <insert id="insert" useGeneratedKeys="true" keyProperty="id"
             parameterType="com.rayhahah.raymall.pojo.NetSourceStory">
-    insert into netsource_story (id, story_from, story_title, 
-      story_content, story_category, story_label, 
-      story_hot, create_time, update_time
-      )
-    values (#{id,jdbcType=INTEGER}, #{storyFrom,jdbcType=VARCHAR}, #{storyTitle,jdbcType=VARCHAR}, 
-      #{storyContent,jdbcType=VARCHAR}, #{storyCategory,jdbcType=VARCHAR}, #{storyLabel,jdbcType=VARCHAR}, 
-      #{storyHot,jdbcType=VARCHAR}, now(), now()
-      )
+    insert into netsource_story (id, story_from, url, 
+      url_object_id, story_title, story_content, 
+      story_category, story_label, story_hot, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{storyFrom,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{urlObjectId,jdbcType=VARCHAR}, #{storyTitle,jdbcType=VARCHAR}, #{storyContent,jdbcType=VARCHAR}, 
+      #{storyCategory,jdbcType=VARCHAR}, #{storyLabel,jdbcType=VARCHAR}, #{storyHot,jdbcType=VARCHAR}, 
+      now(), now())
   </insert>
     <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id"
             parameterType="com.rayhahah.raymall.pojo.NetSourceStory">
@@ -48,6 +50,12 @@
             </if>
             <if test="storyFrom != null">
                 story_from,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="urlObjectId != null">
+                url_object_id,
             </if>
             <if test="storyTitle != null">
                 story_title,
@@ -78,6 +86,12 @@
             <if test="storyFrom != null">
                 #{storyFrom,jdbcType=VARCHAR},
             </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="urlObjectId != null">
+                #{urlObjectId,jdbcType=VARCHAR},
+            </if>
             <if test="storyTitle != null">
                 #{storyTitle,jdbcType=VARCHAR},
             </if>
@@ -107,6 +121,12 @@
             <if test="storyFrom != null">
                 story_from = #{storyFrom,jdbcType=VARCHAR},
             </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="urlObjectId != null">
+                url_object_id = #{urlObjectId,jdbcType=VARCHAR},
+            </if>
             <if test="storyTitle != null">
                 story_title = #{storyTitle,jdbcType=VARCHAR},
             </if>
@@ -134,6 +154,8 @@
     <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.NetSourceStory">
     update netsource_story
     set story_from = #{storyFrom,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      url_object_id = #{urlObjectId,jdbcType=VARCHAR},
       story_title = #{storyTitle,jdbcType=VARCHAR},
       story_content = #{storyContent,jdbcType=VARCHAR},
       story_category = #{storyCategory,jdbcType=VARCHAR},
