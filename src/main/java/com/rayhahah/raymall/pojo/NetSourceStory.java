@@ -7,6 +7,10 @@ public class NetSourceStory {
 
     private String storyFrom;
 
+    private String url;
+
+    private String urlObjectId;
+
     private String storyTitle;
 
     private String storyContent;
@@ -21,9 +25,11 @@ public class NetSourceStory {
 
     private Date updateTime;
 
-    public NetSourceStory(Integer id, String storyFrom, String storyTitle, String storyContent, String storyCategory, String storyLabel, String storyHot, Date createTime, Date updateTime) {
+    public NetSourceStory(Integer id, String storyFrom, String url, String urlObjectId, String storyTitle, String storyContent, String storyCategory, String storyLabel, String storyHot, Date createTime, Date updateTime) {
         this.id = id;
         this.storyFrom = storyFrom;
+        this.url = url;
+        this.urlObjectId = urlObjectId;
         this.storyTitle = storyTitle;
         this.storyContent = storyContent;
         this.storyCategory = storyCategory;
@@ -51,6 +57,22 @@ public class NetSourceStory {
 
     public void setStoryFrom(String storyFrom) {
         this.storyFrom = storyFrom == null ? null : storyFrom.trim();
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
+    }
+
+    public String getUrlObjectId() {
+        return urlObjectId;
+    }
+
+    public void setUrlObjectId(String urlObjectId) {
+        this.urlObjectId = urlObjectId == null ? null : urlObjectId.trim();
     }
 
     public String getStoryTitle() {
