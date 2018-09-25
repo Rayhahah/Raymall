@@ -138,6 +138,16 @@
             <!--<columnOverride column="longtitude" jdbcType="VARCHAR"/>-->
         <!--</table>-->
 
+
+        <!--<table tableName="netsource_story" domainObjectName="NetSourceStory" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false">-->
+            <!--<columnOverride column="story_title" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="story_content" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="story_category" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="story_label" jdbcType="VARCHAR"/>-->
+        <!--</table>-->
+
         <!-- geelynote mybatis插件的搭建 -->
     </context>
 </generatorConfiguration>

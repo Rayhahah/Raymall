@@ -107,6 +107,33 @@ public class Const {
         }
     }
 
+    public interface OrderBy {
+        Set<String> TIME_ASC_DESC = Sets.newHashSet("time_desc", "time_asc");
+        String TIME_COLUMN = "update_time";
+
+        Set<String> DOWNLOAD_ASC_DESC = Sets.newHashSet("download_desc", "download_asc");
+        String DOWNLOAD_COLUMN = "download";
+
+        Set<String> CATEGORY_ASC_DESC = Sets.newHashSet("category_desc", "category_asc");
+        String CATEGORY_ORDER_COLUMN = "category_order";
+
+
+        Set<String> HOT_ASC_DESC = Sets.newHashSet("hot_desc", "hot_asc");
+        String HOT_COLUMN = "hot";
+
+
+        /**
+         * 降序
+         * 最新在最上面
+         */
+        String DESC = "desc";
+        /**
+         * 升序
+         * 最久在最上面
+         */
+        String ASC = "asc";
+    }
+
     public interface AlipayCallback {
         String TRADE_STATUS_WAIT_BUYER_PAY = "WAIT_BUYER_PAY";
         String TRADE_STATUS_TRADE_SUCCESS = "TRADE_SUCCESS";

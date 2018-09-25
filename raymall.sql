@@ -351,3 +351,22 @@ CREATE TABLE `jijian_location` (
   `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+-- ----------------------------
+--  Table structure for `netsource_story`
+-- ----------------------------
+DROP TABLE IF EXISTS `netsource_story`;
+CREATE TABLE `netsource_story` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `story_from` varchar(50) NOT NULL COMMENT '来源',
+  `story_title` text NOT NULL COMMENT '标题',
+  `story_content` text NOT NULL COMMENT '内容',
+  `story_category` text NOT NULL COMMENT '分类',
+  `story_label` text NOT NULL COMMENT '标签',
+  `story_hot` varchar(50) NOT NULL COMMENT '热度',
+   `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
