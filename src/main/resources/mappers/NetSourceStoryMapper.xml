@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rayhahah.raymall.dao.NetSourceStoryMapper">
+    <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.NetSourceStory">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="story_from" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="story_title" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="story_content" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="story_category" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="story_label" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="story_hot" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, story_from, story_title, story_content, story_category, story_label, story_hot, 
+    create_time, update_time
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from netsource_story
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from netsource_story
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.rayhahah.raymall.pojo.NetSourceStory">
+    insert into netsource_story (id, story_from, story_title, 
+      story_content, story_category, story_label, 
+      story_hot, create_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{storyFrom,jdbcType=VARCHAR}, #{storyTitle,jdbcType=VARCHAR}, 
+      #{storyContent,jdbcType=VARCHAR}, #{storyCategory,jdbcType=VARCHAR}, #{storyLabel,jdbcType=VARCHAR}, 
+      #{storyHot,jdbcType=VARCHAR}, now(), now()
+      )
+  </insert>
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.rayhahah.raymall.pojo.NetSourceStory">
+        insert into netsource_story
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="storyFrom != null">
+                story_from,
+            </if>
+            <if test="storyTitle != null">
+                story_title,
+            </if>
+            <if test="storyContent != null">
+                story_content,
+            </if>
+            <if test="storyCategory != null">
+                story_category,
+            </if>
+            <if test="storyLabel != null">
+                story_label,
+            </if>
+            <if test="storyHot != null">
+                story_hot,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="storyFrom != null">
+                #{storyFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="storyTitle != null">
+                #{storyTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="storyContent != null">
+                #{storyContent,jdbcType=VARCHAR},
+            </if>
+            <if test="storyCategory != null">
+                #{storyCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="storyLabel != null">
+                #{storyLabel,jdbcType=VARCHAR},
+            </if>
+            <if test="storyHot != null">
+                #{storyHot,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                now(),
+            </if>
+            <if test="updateTime != null">
+                now(),
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.NetSourceStory">
+        update netsource_story
+        <set>
+            <if test="storyFrom != null">
+                story_from = #{storyFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="storyTitle != null">
+                story_title = #{storyTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="storyContent != null">
+                story_content = #{storyContent,jdbcType=VARCHAR},
+            </if>
+            <if test="storyCategory != null">
+                story_category = #{storyCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="storyLabel != null">
+                story_label = #{storyLabel,jdbcType=VARCHAR},
+            </if>
+            <if test="storyHot != null">
+                story_hot = #{storyHot,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = now(),
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.NetSourceStory">
+    update netsource_story
+    set story_from = #{storyFrom,jdbcType=VARCHAR},
+      story_title = #{storyTitle,jdbcType=VARCHAR},
+      story_content = #{storyContent,jdbcType=VARCHAR},
+      story_category = #{storyCategory,jdbcType=VARCHAR},
+      story_label = #{storyLabel,jdbcType=VARCHAR},
+      story_hot = #{storyHot,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="query" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from netsource_story
+        <where>
+            <if test="id != 0">
+                and netsource_story.id = #{id}
+            </if>
+            <if test="from != null and from !=''">
+                and netsource_story.story_from like CONCAT('%',#{from},'%')
+            </if>
+            <if test="title != null and title !=''">
+                and netsource_story.story_title like CONCAT('%',#{title},'%')
+            </if>
+            <if test="content != null and content !=''">
+                and netsource_story.story_content like CONCAT('%',#{content},'%')
+            </if>
+
+            <if test="category != null and category !=''">
+                and netsource_story.story_category like CONCAT('%',#{category},'%')
+            </if>
+            <if test="label != null and label !=''">
+                and netsource_story.story_label like CONCAT('%',#{label},'%')
+            </if>
+        </where>
+    </select>
+</mapper>
