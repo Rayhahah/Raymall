@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rayhahah.raymall.dao.NetSourceComicMapper">
+    <resultMap id="BaseResultMap" type="com.rayhahah.raymall.pojo.NetSourceComic">
+        <constructor>
+            <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer"/>
+            <arg column="comic_from" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="url" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="url_object_id" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="comic_title" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="comic_cover" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="comic_content" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="comic_author" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="comic_category" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="comic_status" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="comic_label" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="comic_hot" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="comic_page" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="comic_time" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+            <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date"/>
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, comic_from, url, url_object_id, comic_title, comic_cover, comic_content, comic_author, 
+    comic_category, comic_status, comic_label, comic_hot, comic_page, comic_time, create_time, 
+    update_time
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from netsource_comic
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from netsource_comic
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.rayhahah.raymall.pojo.NetSourceComic">
+    insert into netsource_comic (id, comic_from, url, 
+      url_object_id, comic_title, comic_cover, 
+      comic_content, comic_author, comic_category, 
+      comic_status, comic_label, comic_hot, 
+      comic_page, comic_time, create_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{comicFrom,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{urlObjectId,jdbcType=VARCHAR}, #{comicTitle,jdbcType=VARCHAR}, #{comicCover,jdbcType=VARCHAR}, 
+      #{comicContent,jdbcType=VARCHAR}, #{comicAuthor,jdbcType=VARCHAR}, #{comicCategory,jdbcType=VARCHAR}, 
+      #{comicStatus,jdbcType=VARCHAR}, #{comicLabel,jdbcType=VARCHAR}, #{comicHot,jdbcType=VARCHAR}, 
+      #{comicPage,jdbcType=VARCHAR}, #{comicTime,jdbcType=VARCHAR}, now(),
+      now())
+  </insert>
+    <insert id="insertSelective" parameterType="com.rayhahah.raymall.pojo.NetSourceComic">
+        insert into netsource_comic
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="comicFrom != null">
+                comic_from,
+            </if>
+            <if test="url != null">
+                url,
+            </if>
+            <if test="urlObjectId != null">
+                url_object_id,
+            </if>
+            <if test="comicTitle != null">
+                comic_title,
+            </if>
+            <if test="comicCover != null">
+                comic_cover,
+            </if>
+            <if test="comicContent != null">
+                comic_content,
+            </if>
+            <if test="comicAuthor != null">
+                comic_author,
+            </if>
+            <if test="comicCategory != null">
+                comic_category,
+            </if>
+            <if test="comicStatus != null">
+                comic_status,
+            </if>
+            <if test="comicLabel != null">
+                comic_label,
+            </if>
+            <if test="comicHot != null">
+                comic_hot,
+            </if>
+            <if test="comicPage != null">
+                comic_page,
+            </if>
+            <if test="comicTime != null">
+                comic_time,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="comicFrom != null">
+                #{comicFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="urlObjectId != null">
+                #{urlObjectId,jdbcType=VARCHAR},
+            </if>
+            <if test="comicTitle != null">
+                #{comicTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="comicCover != null">
+                #{comicCover,jdbcType=VARCHAR},
+            </if>
+            <if test="comicContent != null">
+                #{comicContent,jdbcType=VARCHAR},
+            </if>
+            <if test="comicAuthor != null">
+                #{comicAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="comicCategory != null">
+                #{comicCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="comicStatus != null">
+                #{comicStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="comicLabel != null">
+                #{comicLabel,jdbcType=VARCHAR},
+            </if>
+            <if test="comicHot != null">
+                #{comicHot,jdbcType=VARCHAR},
+            </if>
+            <if test="comicPage != null">
+                #{comicPage,jdbcType=VARCHAR},
+            </if>
+            <if test="comicTime != null">
+                #{comicTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                now(),
+            </if>
+            <if test="updateTime != null">
+                now(),
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.rayhahah.raymall.pojo.NetSourceComic">
+        update netsource_comic
+        <set>
+            <if test="comicFrom != null">
+                comic_from = #{comicFrom,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null">
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="urlObjectId != null">
+                url_object_id = #{urlObjectId,jdbcType=VARCHAR},
+            </if>
+            <if test="comicTitle != null">
+                comic_title = #{comicTitle,jdbcType=VARCHAR},
+            </if>
+            <if test="comicCover != null">
+                comic_cover = #{comicCover,jdbcType=VARCHAR},
+            </if>
+            <if test="comicContent != null">
+                comic_content = #{comicContent,jdbcType=VARCHAR},
+            </if>
+            <if test="comicAuthor != null">
+                comic_author = #{comicAuthor,jdbcType=VARCHAR},
+            </if>
+            <if test="comicCategory != null">
+                comic_category = #{comicCategory,jdbcType=VARCHAR},
+            </if>
+            <if test="comicStatus != null">
+                comic_status = #{comicStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="comicLabel != null">
+                comic_label = #{comicLabel,jdbcType=VARCHAR},
+            </if>
+            <if test="comicHot != null">
+                comic_hot = #{comicHot,jdbcType=VARCHAR},
+            </if>
+            <if test="comicPage != null">
+                comic_page = #{comicPage,jdbcType=VARCHAR},
+            </if>
+            <if test="comicTime != null">
+                comic_time = #{comicTime,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = now(),
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.rayhahah.raymall.pojo.NetSourceComic">
+    update netsource_comic
+    set comic_from = #{comicFrom,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      url_object_id = #{urlObjectId,jdbcType=VARCHAR},
+      comic_title = #{comicTitle,jdbcType=VARCHAR},
+      comic_cover = #{comicCover,jdbcType=VARCHAR},
+      comic_content = #{comicContent,jdbcType=VARCHAR},
+      comic_author = #{comicAuthor,jdbcType=VARCHAR},
+      comic_category = #{comicCategory,jdbcType=VARCHAR},
+      comic_status = #{comicStatus,jdbcType=VARCHAR},
+      comic_label = #{comicLabel,jdbcType=VARCHAR},
+      comic_hot = #{comicHot,jdbcType=VARCHAR},
+      comic_page = #{comicPage,jdbcType=VARCHAR},
+      comic_time = #{comicTime,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="query" parameterType="map" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from netsource_comic
+        <where>
+            <if test="id != 0">
+                and netsource_comic.id = #{id}
+            </if>
+            <if test="from != null and from !=''">
+                and netsource_comic.comic_from like CONCAT('%',#{from},'%')
+            </if>
+            <if test="title != null and title !=''">
+                and netsource_comic.comic_title like CONCAT('%',#{title},'%')
+            </if>
+            <if test="author != null and author !=''">
+                and netsource_comic.comic_author like CONCAT('%',#{author},'%')
+            </if>
+
+            <if test="category != null and category !=''">
+                and netsource_comic.comic_category like CONCAT('%',#{category},'%')
+            </if>
+            <if test="status != null and status !=''">
+                and netsource_comic.comic_status like CONCAT('%',#{status},'%')
+            </if>
+            <if test="label != null and label !=''">
+                and netsource_comic.comic_label like CONCAT('%',#{label},'%')
+            </if>
+        </where>
+    </select>
+
+</mapper>

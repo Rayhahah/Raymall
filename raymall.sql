@@ -373,3 +373,29 @@ CREATE TABLE `netsource_story` (
   PRIMARY KEY (`id`),
   UNIQUE KEY (`url_object_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+--  Table structure for `netsource_comic`
+-- ----------------------------
+DROP TABLE IF EXISTS `netsource_comic`;
+CREATE TABLE `netsource_comic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `comic_from` varchar(50) NOT NULL COMMENT '来源',
+  `url` text NOT NULL COMMENT '唯一连接',
+  `url_object_id` varchar(50) NOT NULL COMMENT '唯一连接',
+  `comic_title` text NOT NULL COMMENT '标题',
+  `comic_cover` text NOT NULL COMMENT '封面',
+  `comic_content` text NOT NULL COMMENT '内容',
+  `comic_author` text NOT NULL COMMENT '创作时间',
+  `comic_category` text NOT NULL COMMENT '分类',
+  `comic_status` text NOT NULL COMMENT '状态',
+  `comic_label` text NOT NULL COMMENT '标签',
+  `comic_hot` varchar(50) NOT NULL COMMENT '热度',
+  `comic_page` varchar(50) NOT NULL COMMENT '页数',
+  `comic_time` varchar(50) NOT NULL COMMENT '创作时间',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  `update_time` datetime NOT NULL COMMENT '最后一次更新时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY (`url_object_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
